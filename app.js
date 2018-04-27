@@ -8,7 +8,7 @@ $clickYourDay.forEach((meme)=> {
     makeQueryString(clickedId)
     hideClickedElement()
     showResetButton()
-    getShit()
+    getBeer()
   })
 })
 
@@ -59,8 +59,14 @@ fetch(apiUrl)
     }
   }
 
-  function createDiv(){
-    
+  function createDiv(beer){
+    var $aboveButton = document.querySelector('.reset-button')
+    var $beerDiv = document.createElement('div')
+    $beerDiv.classList = 'your-beer'
+    $beerDiv.innerHTML = `<img src=${img_url}>
+    <h3>${beer.name}</h3>
+    <p>${beer.abv}</p>
+    <p>${beer.description}</p>`
   }
 
   function getRandomNumber(data) {
