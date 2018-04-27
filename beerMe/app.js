@@ -66,7 +66,7 @@ fetch(apiUrl)
   }
 
   function createDiv(beer){
-    
+
     var $aboveButton = document.querySelector('.reset-button')
     var $beerDiv = document.createElement('div')
     $beerDiv.classList = 'your-beer'
@@ -75,6 +75,7 @@ fetch(apiUrl)
     createH3(beer, $beerDiv)
     createP1(beer, $beerDiv)
     createP2(beer, $beerDiv)
+    createFindBeer(beer, $beerDiv)
   }
 function createImg(beer, $parent) {
   var $img = document.createElement('img')
@@ -97,6 +98,16 @@ function createP2(beer, $parent) {
   $p2.textContent = beer.description
   $parent.appendChild($p2)
 }
+
+function createFindBeer(beer, $parent){
+  var tapUrl = `https://www.taphunter.com/search/?search=${beer.name}`
+  var $a = document.createElement('a')
+  $a.textContent = 'Find Me That Beer'
+  $parent.appendChild($a)
+  $a.href = tapUrl
+  $a.target = "_blank"
+}
+
   function getRandomNumber(data) {
     var lengthOfArray = data.length
     var randomBeerSelection = Math.floor(Math.random() * lengthOfArray)
