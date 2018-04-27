@@ -90,19 +90,22 @@ function createH3(beer, $parent) {
 }
 function createP1(beer, $parent) {
   var $p1 = document.createElement('p')
-  $p1.textContent = beer.abv
+  $p1.textContent = `${beer.abv} Abv`
+  $p1.id = "apv"
   $parent.appendChild($p1)
 }
 function createP2(beer, $parent) {
   var $p2 = document.createElement('p')
   $p2.textContent = beer.description
+  $p2.id = "desc"
   $parent.appendChild($p2)
 }
 
 function createFindBeer(beer, $parent){
   var tapUrl = `https://www.taphunter.com/search/?search=${beer.name}`
   var $a = document.createElement('a')
-  $a.textContent = 'Find Me That Beer'
+  $a.textContent = 'Find Me That Beer!'
+  $a.id = 'findDaBeer'
   $parent.appendChild($a)
   $a.href = tapUrl
   $a.target = "_blank"
