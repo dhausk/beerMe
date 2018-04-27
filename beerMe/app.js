@@ -22,7 +22,7 @@ fetch(apiUrl)
   .then(function(data) {
     console.log(data);
     var selectedBeer = getRandomNumber(data)
-    // createDiv(selectedBeer)
+    createDiv(selectedBeer)
 
   })
   .catch(function(err) {
@@ -63,16 +63,14 @@ fetch(apiUrl)
     }
   }
 
-  // function createDiv(beer){
-  //   var $aboveButton = document.querySelector('.reset-button')
-  //   var $beerDiv = document.createElement('div')
-  //   $beerDiv.classList = 'your-beer'
-  //   $beerDiv.innerHTML = `<img src= `${img_url}`>
-  //   <h3>${beer.name}</h3>
-  //   <p>${beer.abv}</p>
-  //   <p>${beer.description}</p>`
-  //   $aboveButton
-  // }
+  function createDiv(beer){
+    var $aboveButton = document.querySelector('.reset-button')
+    var $beerDiv = document.createElement('div')
+    $beerDiv.classList = 'your-beer'
+    $beerDiv.innerHTML = "<img src= `${beer.img_url}`> <h3>`${beer.name}`</h3><p>`${beer.abv}`</p><p>`${beer.description}`</p>"
+    $main.appendChild($beerDiv)
+
+  }
 
   function getRandomNumber(data) {
     var lengthOfArray = data.length
