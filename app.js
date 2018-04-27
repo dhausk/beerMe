@@ -1,12 +1,11 @@
 var $clickYourDay = document.querySelectorAll('.your-day')
 var $picDiv = document.querySelector('.allPics')
 var $main = document.querySelector('main')
-let apiUrl = ''
-
+let clickedId;
 
 $clickYourDay.forEach((meme)=> {
   meme.addEventListener('click', function () {
-    var clickedId = event.target.id
+    clickedId = event.target.id
     makeQueryString(clickedId)
     console.log(apiUrl)
     hideClickedElement()
@@ -16,13 +15,12 @@ $clickYourDay.forEach((meme)=> {
 })
 
 function getBeer (){
-  console.log(apiUrl)
 fetch(apiUrl)
   .then(function(response) {
     return response.json()
   })
   .then(function(data) {
-    console.log(data);
+    console.log('data');
     var selectedBeer = getRandomNumber(data)
     createDiv(selectedBeer)
 
@@ -43,26 +41,28 @@ fetch(apiUrl)
   }
 
   function makeQueryString(clickedId){
+    var apiUrl = ''
     switch (clickedId) {
       case '1':
         apiUrl = 'https://api.punkapi.com/v2/beers?abv_lt=4.1'
         break;
       case '2':
-        apiUrl = 'https://api.punkapi.com/v2/beers?abv_lt=8&abv_gt=4'
+        apiUrl = 'https://api.punkapi.com/v2/beers?abv_lt=8&abv_gt4'
         break;
       case '3':
-        apiUrl = 'https://api.punkapi.com/v2/beers?abv_lt=12&abv_gt=8'
+        apiUrl = 'https://api.punkapi.com/v2/beers?abv_lt=12&abv_gt8'
         break;
       case '4':
-        apiUrl = 'https://api.punkapi.com/v2/beers?abv_lt=17&abv_gt=12'
+        apiUrl = 'https://api.punkapi.com/v2/beers?abv_lt=17&abv_gt12'
         break;
       case '5':
-        apiUrl = 'https://api.punkapi.com/v2/beers?abv_gt=17'
+        apiUrl = 'https://api.punkapi.com/v2/beers?abv_gt17'
         break;
       default:
       console.log('nope');
 
     }
+    console.log(apiUrl)
     return apiUrl
   }
 
